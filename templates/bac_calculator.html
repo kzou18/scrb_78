@@ -1,0 +1,761 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+
+{% extends 'base.html' %}
+{% block content %}
+
+<body>
+    <h1 style="color:white">Tracker</h1>
+
+    <br>
+    <div>Enter your info:</div>
+
+    <div id="genderDisplay" style="display:none">
+        My gender is <span id="genderValue"></span>
+    </div>
+    <div id="genderInput" class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Gender</span>
+        </div>
+        <select class="form-control" name="gender" id="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+    </div>
+
+    <div id="weightDisplay" class="mt-2" style="display:none">
+        My weight is <span id="weightValue"></span> lbs
+    </div>
+
+    <div id="weightInput" class="mt-2 input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Weight</span>
+        </div>
+        <input class="form-control" name="weight" type="number" id="weight">
+        </input>
+    </div>
+
+    <button id="submitInfo" class="mt-2">Submit Info</button>
+
+    <br style=“line-height:3;"></br>
+
+    <div>Select your drink:</div>
+
+    <div id="drinkInput" class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Drink</span>
+        </div>
+        <select id="drinkSelector" class="form-control" name="drink" data-url="drinkOption">
+            <option class="drinkOption" value="360">1554 Enlightened Black Ale / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="651">1910 Rye Whisky / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="612">Abbots Lager / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="304">Absinthe / 50% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="569">Absolut Vodka / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="630">Addlestones Cider / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="607">Aguila / 3.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="404">Alaskan Amber / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="405">Alaskan IPA / 6.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="406">Alaskan Pale / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="566">Alcohol Inspired Refresher (AIR) / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="562">AleSmith Anvil ESB / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="563">AleSmith IPA / 7.25% ABV / 12oz serving</option>
+            <option class="drinkOption" value="564">AleSmith Old Numbskull / 11% ABV / 12oz serving</option>
+            <option class="drinkOption" value="561">AleSmith Speedway Stout / 12% ABV / 12oz serving</option>
+            <option class="drinkOption" value="560">AleSmith X / 5.25% ABV / 12oz serving</option>
+            <option class="drinkOption" value="592">Alexander Keiths Brown Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="591">Alexander Keiths Lager / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="411">Alexander Keiths Pale Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="345">Amstel Light / 3.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="118">Anchor Porter / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="92">Anchor Steam / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="567">Angry Orchard Traditional Dry Cider / 5.5% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="122">Arbor Mist White Zinfandel Exotic Fruit / 6% ABV / 5oz serving
+            </option>
+            <option class="drinkOption" value="321">Asahi Black / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="320">Asahi Super Dry / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="247">Bacardi 151 Rum / 75.5% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="248">Bacardi Gold Rum / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="457">Bacardi Light Mojito / 12.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="458">Bacardi Light Pina Colada / 11.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="127">Bacardi Silver 03 / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="125">Bacardi Silver Mojito / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="126">Bacardi Silver Peach / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="130">Baily's Irish Cream / 17% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="613">Ballarat Bitter / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="551">Bards Original Sorghum Malt Beer / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="243">Bass / 5.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="582">Batch 19 / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="474">Becherovka / 38% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="225">Beck's Dark / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="226">Beck's Octoberfest / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="53">Beck's Premier Light / 2.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="224">Becks Pilsner / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="572">Becks Sapphire / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="393">Beefeater Gin / 47% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="614">Beez Neez (Matilda Bay) / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="374">Belle-Vue Selection Lambic / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="578">Big Flats Lager Beer / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="579">Big Flats Light Beer / 3.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="495">Bitburger Light / 2.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="623">Blackthorn Cider / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="228">Bloody Mary / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="84">Blue Moon Belgian White / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="181">Blue Moon Full Moon Winter Ale / 5.52% ABV / 12oz serving</option>
+            <option class="drinkOption" value="182">Blue Moon Harvest Moon Pumpkin Ale / 5.76% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="183">Blue Moon Honey Moon Summer Ale / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="184">Blue Moon Rising Moon Spring Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="447">Blue Paddle Pilsner Lager / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="423">Boags Draught / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="422">Boags XXX Ale / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="217">Boddingtons Pub Ale / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="556">Bohemia Clasica / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="452">Bombay Sapphire Gin / 47% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="322">Bowman's Vodka / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="107">Bud American Ale / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="30">Bud Dry / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="398">Bud Ice / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="31">Bud Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="138">Bud Light Golden Wheat / 4.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="52">Bud Light Lime / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="478">Bud Light Lime-A-Rita 6% / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="479">Bud Light Lime-A-Rita 8% / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="407">Bud Light Platinum / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="137">Bud Select 55 / 2.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="67">Budweiser / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="571">Budweiser Black Crown / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="19">Budweiser Select / 4.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="667">Bulleit Bourbon / 45% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="666">Bulleit Rye / 45% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="311">Bulmers Irish Cider / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="312">Bulmers Light Irish Cider / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="63">Busch / 4.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="65">Busch Ice / 5.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="20">Busch Light / 4.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="594">Busch NA / 0.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="296">Bushmills Irish Whiskey / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="37">Cabernet Sauvignon / 13.8% ABV / 5oz serving</option>
+            <option class="drinkOption" value="275">Captain Morgan - Long Island Iced Tea / 17% ABV / 1.5oz serving
+            </option>
+            <option class="drinkOption" value="265">Captain Morgan - Private Stock 40% / 40% ABV / 1.5oz serving
+            </option>
+            <option class="drinkOption" value="512">Captain Morgan 100 Proof Rum / 50% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="511">Captain Morgan Black Spiced Rum / 47.3% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="9">Captain Morgan Original Spiced Rum / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="439">Carling / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="438">Carling Chrome / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="527">Carlo Rossi - Blush / 9.1% ABV / 5oz serving</option>
+            <option class="drinkOption" value="277">Carlo Rossi - Burgundy / 12.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="279">Carlo Rossi - Cabernet Sauvignon / 11.8% ABV / 5oz serving</option>
+            <option class="drinkOption" value="528">Carlo Rossi - Chablis / 10.2% ABV / 5oz serving</option>
+            <option class="drinkOption" value="529">Carlo Rossi - Chianti / 12.4% ABV / 5oz serving</option>
+            <option class="drinkOption" value="530">Carlo Rossi - Paisano / 11.9% ABV / 5oz serving</option>
+            <option class="drinkOption" value="531">Carlo Rossi - Rhine / 9.2% ABV / 5oz serving</option>
+            <option class="drinkOption" value="532">Carlo Rossi - Sangria Spanada / 10% ABV / 5oz serving</option>
+            <option class="drinkOption" value="533">Carlo Rossi - Vin Rose / 9.1% ABV / 5oz serving</option>
+            <option class="drinkOption" value="534">Carlo Rossi - White Grenache / 10.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="278">Carlo Rossi - White Zinfandel / 8% ABV / 5oz serving</option>
+            <option class="drinkOption" value="430">Carlsberg Elephant / 7.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="289">Carlsberg Export / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="432">Cascade Lager / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="433">Cascade Premium Light / 2.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="552">Chambord Black Raspberry Liqueur / 16.5% ABV / 1.5oz serving
+            </option>
+            <option class="drinkOption" value="553">Chambord Flavored Vodka / 37.5% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="238">Champagne - Dom Perignon (Year 2000) / 12.5% ABV / 5oz serving
+            </option>
+            <option class="drinkOption" value="237">Champagne - Moet Imperial (White Star) / 12.5% ABV / 5oz serving
+            </option>
+            <option class="drinkOption" value="43">Chardonnay (Sterling Vineyards) / 14.4% ABV / 5oz serving</option>
+            <option class="drinkOption" value="282">Charles Shaw - Cabernet Sauvignon / 12.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="589">Chelada Bud Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="152">Chelada Budweiser / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="254">Chianti - Davinci / 13% ABV / 5oz serving</option>
+            <option class="drinkOption" value="507">Chimay Rouge / 7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="506">Chimay Triple / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="326">Chivas Regal Premium Scotch Whisky / 40% ABV / 1.5oz serving
+            </option>
+            <option class="drinkOption" value="302">Cointreau Triple Sec / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="60">Colt 45 Malt Liquor / 6.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="81">Coors Banquet / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="153">Coors Extra Gold Lager / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="29">Coors Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="132">Coors Non-Alcoholic / 0.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="100">Corona Extra / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="23">Corona Light / 4.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="668">Corona Premier / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="394">Coronado Brewing Orange Ave Wit / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="395">Coronado Golden - Coronado Brewing Co. / 5.4% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="396">Coronado Idiot IPA / 8.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="503">Cosmopolitan / 22.9% ABV / 3.5oz serving</option>
+            <option class="drinkOption" value="292">Courvoisier XO Cognac / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="514">Cragganmore Scotch Whisky / 60.1% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="403">Cranberry Vodka (Cape Cod) / 10.91% ABV / 12oz serving</option>
+            <option class="drinkOption" value="540">Creme de menthe / 36% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="557">Crispin Natural Hard Apple Cider / 6.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="608">Cristal / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="434">Crown Gold / 3.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="435">Crown Lager / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="262">Crown Royal - Special Reserve / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="513">Dalwhinnie Scotch Whisky / 57.8% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="291">Disaronno - Amaretto Di Saronno / 28% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="347">Dogfish Head 60min IPA / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="366">Don Julio Blanco Tequila / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="316">Dos Equis Amber / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="317">Dos Equis Lager / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="622">Dry Blackthorn Cider / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="142">Dunkelweisse / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="300">Duvel / 8.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="388">E &amp; J Brandy VSOP / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="389">E&amp;J Brandy / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="390">E&amp;J Cognac / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="391">E&amp;J XO Brandy / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="425">Emu Bitter / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="421">Emu Draft / 3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="1">Everclear
+            <option class="drinkOption" value="523">Exotic Berry - Bartles &amp; Jaymes / 3.6% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="87">Fat Tire / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="400">Fireball Whisky / 33% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="207">Foster's / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="208">Fosters Premium Ale / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="221">Four Loko (all flavors) / 12% ABV / 12oz serving</option>
+            <option class="drinkOption" value="272">Franzia Cabernet Sauvingon / 12% ABV / 5oz serving</option>
+            <option class="drinkOption" value="271">Franzia Chillable Red / 9% ABV / 5oz serving</option>
+            <option class="drinkOption" value="276">Franzia Crisp White Wine / 9% ABV / 5oz serving</option>
+            <option class="drinkOption" value="273">Franzia Merlot Wine / 12.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="274">Franzia Shiraz Wine / 13% ABV / 5oz serving</option>
+            <option class="drinkOption" value="185">Frederick Miller Classic Chocolate Lager / 5.5% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="522">Fuzzy Navel - Bartles &amp; Jaymes / 3.6% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="621">Gaymers Berry Cider / 3.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="619">Gaymers Original Cider / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="620">Gaymers Pear Cider / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="103">George Killian's Irish Red / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="541">Gewurztraminer Wine / 12% ABV / 5oz serving</option>
+            <option class="drinkOption" value="216">Gin and Tonic / 10% ABV / 12oz serving</option>
+            <option class="drinkOption" value="644">Girl Go Lightly Rose Wine / 11% ABV / 5oz serving</option>
+            <option class="drinkOption" value="327">Glenfiddich Scotch Whisky / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="298">Godiva - Chocolate Cream Liqueur / 15% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="35">Goldschlager / 43.5% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="661">Goose Island Honkers Ale / 4.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="660">Goose Island India Pale Ale / 5.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="662">Goose Island Nut Brown Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="663">Goose Island Oktoberfest / 6.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="659">Goose Island Ten Hills Pale Ale / 6.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="333">Gordons - Dry Gin / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="409">Grahams 2007 Vintage Port / 20% ABV / 5oz serving</option>
+            <option class="drinkOption" value="537">Grand Marnier Orange Liqueur / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="656">Grand Monarch / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="550">Greens Premium Golden Ale / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="549">Greens Premium Pils / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="413">Greens Tripel Blonde Ale / 8.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="454">Grey Goose Vodka / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="170">Grolsch Amber Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="171">Grolsch Blonde Lager / 2.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="172">Grolsch Light Lager / 3.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="173">Grolsch Premium Lager / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="609">Guinness Black Lager / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="665">Guinness Blonde American Lager / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="68">Guinness Draught / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="610">Guinness Generous Ale / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="416">Hahn Premium / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="417">Hahn Premium Light / 2.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="370">Hakutsuru Draft Sake / 14% ABV / 12oz serving</option>
+            <option class="drinkOption" value="371">Hakutsuru Plum Wine / 12.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="372">Hakutsuru Plum Wine Slim / 10.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="367">Hakutsuru Premium Sake / 15.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="369">Hakutsuru Superior Sake / 14.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="154">Hamm's / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="156">Hamm's Special Light / 3.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="95">Harbin Lager / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="386">Harp Lager / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="79">Heineken / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="57">Heineken Light / 3.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="558">Hendricks Gin / 44% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="186">Henry Weinhard's Belgian Style Wheat / 4.9% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="187">Henry Weinhard's Blonde / 5.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="188">Henry Weinhard's Blue Boar / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="189">Henry Weinhard's Classic Dark Lager / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="190">Henry Weinhard's Hefeweizen / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="191">Henry Weinhard's India Pale Ale / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="192">Henry Weinhard's Private Reserve / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="323">Hoegaarden White / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="58">Hornsby's Hard Cider - Draft Cider / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="115">Hornsby's Hard Cider - Hard Apple Cider / 5.5% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="303">Hpnotiq / 17% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="649">HRD Peach Schnapps / 21% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="648">HRD Root Beer Schnapps / 21% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="235">Hurricane (Original) / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="232">Hurricane High Gravity / 8.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="399">Hurricane Ice / 7.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="157">Icehouse / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="344">Imperial / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="348">Irish Car Bomb / 6.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="473">Jack and Coke / 10% ABV / 12oz serving</option>
+            <option class="drinkOption" value="472">Jack and Diet Coke / 10% ABV / 12oz serving</option>
+            <option class="drinkOption" value="249">Jack Daniels Whiskey / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="349">Jager Bomb / 8.75% ABV / 6oz serving</option>
+            <option class="drinkOption" value="112">Jagermeister / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="419">James Boags Premium / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="418">James Boags Premium Light / 2.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="346">Jameson Irish Whiskey / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="332">Jeremiah Weed - Lightning Lemonade / 5.8% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="331">Jeremiah Weed - Roadhouse Tea / 5.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="330">Jeremiah Weed - Spiked Cola / 5.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="329">Jeremiah Weed Bourbon / 50% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="515">Jeremiah Weed Sweet Tea / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="328">Jim Beam Kentuckty Straight Bourbon Whiskey / 40% ABV / 1.5oz
+                serving
+            </option>
+            <option class="drinkOption" value="259">Johnnie Walker - Red Label 43% / 43% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="570">Jose Cuervo - Golden Margarita Pre mixed / 12.7% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="222">Jose Cuervo Especial (Gold) / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="223">Jose Cuervo Especial (Silver) / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="385">Jose Cuervo Light Margarita / 9.95% ABV / 12oz serving</option>
+            <option class="drinkOption" value="629">K Cider (UK version) / 8.35% ABV / 12oz serving</option>
+            <option class="drinkOption" value="129">Kahlua / 20% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="504">Kamikaze / 28.6% ABV / 3.5oz serving</option>
+            <option class="drinkOption" value="288">Karl Strauss - Amber Lager / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="287">Karl Strauss - Red Trolley Ale / 5.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="387">Ketel One Vodka / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="22">Keystone Ice / 5.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="27">Keystone Light / 4.13% ABV / 12oz serving</option>
+            <option class="drinkOption" value="28">Keystone Premium / 4.43% ABV / 12oz serving</option>
+            <option class="drinkOption" value="12">King Cobra / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="597">Kirin Free / 0% ABV / 12oz serving</option>
+            <option class="drinkOption" value="70">Kirin Ichiban / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="73">Kirin Light / 3.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="364">Knob Creek Bourbon / 50% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="600">Kona Big Wave Golden Ale / 4.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="601">Kona Fire Rock Pale Ale / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="602">Kona Koko Nut Brown Ale / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="599">Kona Longboard Island Lager / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="603">Kona Pipeline Porter / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="604">Kona Wailua Wheat Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="496">Konig Pilsener / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="497">Konig Radler / 2.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="494">Krombacher Dark / 4.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="492">Krombacher Pils / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="493">Krombacher Weizen / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="362">Kronenbourg 1664 / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="342">Labatt Blue / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="343">Labatt Blue Light / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="299">Labatt Sterling / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="669">Lagunitas Daytime IPA / 4% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="477">Landshark Lager / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="375">Leffe Tripel / 8.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="194">Leinenkugel's Berry Weiss / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="195">Leinenkugel's BIG BUTT Dopplebock / 5.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="197">Leinenkugel's Creamy Dark / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="198">Leinenkugel's Fireside Nut Brown / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="199">Leinenkugel's Honey Weiss / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="200">Leinenkugel's Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="201">Leinenkugel's Oktoberfest Lager / 5.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="202">Leinenkugel's Original Lager / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="203">Leinenkugel's Red Lager / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="204">Leinenkugel's Summer Shandy / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="205">Leinenkugel's Sunset Wheat / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="498">Licher Pilsner Leicht / 2.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="536">Limoncello / 32% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="351">Long Island Iced Tea / 23.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="98">Lowenbrau Dark / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="86">Lowenbrau Special Beer / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="598">Lucid Absinthe Superieure / 62% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="40">Mad Dog 20/20 Red Grape Wine / 13% ABV / 5oz serving</option>
+            <option class="drinkOption" value="618">Magners Golden Draught / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="605">Magners Irish Cider / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="631">Magners Original Cider (UK varient) / 4.5% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="616">Magners Pear and Ginger / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="632">Magners Pear Cider / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="617">Magners Spiced Apple and Honey / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="54">Magnum Malt Liquor / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="466">Makers Mark / 45.5% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="350">Malibu Rum / 21% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="229">Margarita / 10% ABV / 12oz serving</option>
+            <option class="drinkOption" value="524">Margarita - Bartles &amp; Jaymes / 3.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="306">MARTINI &amp; ROSSI Asti / 7% ABV / 5oz serving</option>
+            <option class="drinkOption" value="307">MARTINI &amp; ROSSI Extra Dry / 18% ABV / 5oz serving</option>
+            <option class="drinkOption" value="611">MARTINI &amp; ROSSI Prosecco / 10.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="502">Martini / 43.1% ABV / 4oz serving</option>
+            <option class="drinkOption" value="47">Merlot / 13.9% ABV / 5oz serving</option>
+            <option class="drinkOption" value="392">MGD 64 Lemonade / 2.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="105">Michelob / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="75">Michelob AmberBock / 5.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="114">Michelob Honey Lager / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="62">Michelob Light / 4.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="476">Michelob Ultra 19th Hole Light Tea &amp; Lemonade / 3.9% ABV / 12oz
+                serving</option>
+            <option class="drinkOption" value="16">Michelob Ultra / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="17">Michelob Ultra Amber / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="587">Michelob ULTRA Dragonfruit Peach / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="475">Michelob Ultra Light Cider / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="586">Michelob ULTRA Lime Cactus / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="310">Michelob ULTRA Pomegranate Raspberry / 4% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="159">Mickey's Fine Malt Liquor / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="44">Mickey's Ice / 5.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="384">Midori / 20% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="240">Mike's "The Classic Margarita" / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="239">Mike's Hard Lemonade / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="397">Mike's Lite Hard Lemonade / 3.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="160">Miller Chill / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="664">Miller Fortune / 6.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="82">Miller Genuine Draft / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="32">Miller Genuine Draft Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="83">Miller High Life / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="33">Miller High Life Light / 4.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="26">Miller Icehouse Light / 4.13% ABV / 12oz serving</option>
+            <option class="drinkOption" value="18">Miller Lite / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="134">Miller64 / 2.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="24">Milwaukee's Best Ice / 5.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="21">Milwaukee's Best Light / 4.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="59">Milwaukee's Best Premium / 4.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="402">Mimosa / 6.25% ABV / 5oz serving</option>
+            <option class="drinkOption" value="353">Modelo Especial / 4.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="373">Mojito / 6.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="48">Molson Canadian / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="219">Molson Canadian 67 / 3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="175">Molson Canadian Light / 3.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="176">Molson Golden / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="177">Molson Ice / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="178">Molson XXX / 7.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="653">Monarch 151 Rum / 75.5% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="655">Monarch Brandy / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="657">Monarch Citron Vodka / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="654">Monarch Pineapple Rum / 21% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="606">Moscato (Girl Go Lightly 2012) / 11% ABV / 5oz serving</option>
+            <option class="drinkOption" value="517">Murphys Irish Stout / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="464">Myers Frozen Pina Colada / 13% ABV / 5oz serving</option>
+            <option class="drinkOption" value="463">Myers Frozen Strawberry Daiquiri / 13% ABV / 5oz serving</option>
+            <option class="drinkOption" value="645">Myers Original Dark Rum / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="401">Natty Daddy / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="231">Natural Ice / 5.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="230">Natural Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="355">Negra Modelo / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="352">New Belgium Sunshine Wheat / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="548">New Planet 3R Raspberry Ale / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="546">New Planet Off Grid Pale Ale / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="547">New Planet Tread Lightly Ale
+            <option class="drinkOption" value="318">Newcastle Brown Ale / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="658">NIXE Extra Dry
+            <option class="drinkOption" value="133">O'Doul's / 0.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="593">ODouls Amber / 0.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="102">Old Milwaukee Beer / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="78">Old Milwaukee Light / 3.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="162">Olde English 800 7.5 / 7.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="46">Olde English 800 / 5.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="163">Olde English High Gravity 800 / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="376">Ozeki Sake (Regular Type) / 16% ABV / 5oz serving</option>
+            <option class="drinkOption" value="545">Pabst Blue Ribbon / 4.74% ABV / 12oz serving</option>
+            <option class="drinkOption" value="544">Pabst Blue Ribbon Light / 4.19% ABV / 12oz serving</option>
+            <option class="drinkOption" value="356">Pacifico / 4.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="110">Parrot Bay Caribbean Coconut Rum / 20% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="220">Pastis pure / 45% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="241">Patron Anejo Tequila / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="293">Patron Gran Patron Burdeos Anejo / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="242">Patron Silver Tequila / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="450">Paulaner Hefe-Weizen / 5.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="451">Paulaner Munich Premium Lager / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="449">Paulaner Oktoberfest Marzen / 5.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="646">Pendleton Whisky / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="179">Peroni Nastro Azzurro / 5.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="106">Pete's Wicked Ale / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="252">Pig's Eye Ice Beer / 5.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="251">Pig's Eye Lean Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="641">Pigs Eye P.B. High Gravity Ice Malt Liquour
+            <option class="drinkOption" value="113">Pilsner Urquell / 4.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="459">Pina Colada (blended) / 10% ABV / 12oz serving</option>
+            <option class="drinkOption" value="525">Pina Colada - Bartles &amp; Jaymes / 3.6% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="462">Pinot Noir (Beaulieu Vineyard) / 13.7% ABV / 5oz serving</option>
+            <option class="drinkOption" value="3">Popov Vodka 100 proof / 50% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="280">Popov Vodka 80 proof / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="518">Pure Ethanol Not a real drink, for comparison only / 100% ABV /
+                1.5oz
+                serving</option>
+            <option class="drinkOption" value="633">Pyramid Apricot Ale / 5.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="104">Pyramid Hefeweizen / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="635">Pyramid Outburst IPA / 8.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="634">Pyramid ThunderHead IPA / 6.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="590">Red Bridge Beer / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="71">Red Dog / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="89">Red Hook ESB / 5.77% ABV / 12oz serving</option>
+            <option class="drinkOption" value="64">Red Hook IPA / 6.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="294">Red Stripe / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="643">Red Stripe Light / 3.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="583">Redds Apple Ale / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="39">Rolling Rock Extra Pale / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="116">Rum and Coke / 8.75% ABV / 12oz serving</option>
+            <option class="drinkOption" value="10">Rum and Diet Coke / 8.75% ABV / 12oz serving</option>
+            <option class="drinkOption" value="261">Rumple Minze - Peppermint / 50% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="336">Sailor Jerry Spiced Navy Rum / 46% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="69">Sam Adams Light / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="253">Sambuca Romana / 42% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="111">Samuel Adams Boston Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="108">Samuel Adams Boston Lager / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="468">Samuel Adams Cherry Wheat / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="121">Samuel Adams Chocolate Bock / 5.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="119">Samuel Adams Cream Stout / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="470">Samuel Adams Double Bock / 9.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="469">Samuel Adams Noble Pils / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="72">Samuel Adams Pale Ale / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="467">Samuel Adams Winter Lager / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="61">Sapporo Premium / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="596">Sapporo Premium Light / 3.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="260">Sauvingnon Blanc / 13.3% ABV / 5oz serving</option>
+            <option class="drinkOption" value="368">Sayuri Nigori Sake / 12.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="91">Schlitz Beer / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="34">Schlitz Light / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="76">Schlitz Malt Liquor / 6.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="324">Screwdriver / 13.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="270">Seagrams 7 / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="209">Sharp's / 0.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="436">Sheaf Stout / 5.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="339">Shiner Blonde / 4.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="338">Shiner Bock / 4.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="341">Shiner Hefeweizen / 5.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="340">Shiner Light / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="337">Shiner Light Blonde / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="359">Shock Top Belgian White / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="410">Shock Top Pumpkin / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="588">Shock Top Rasberry Wheat / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="268">Sierra Nevada Bigfoot / 9.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="267">Sierra Nevada Celebration Ale / 6.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="637">Sierra Nevada Hoptimum / 10.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="94">Sierra Nevada Pale Ale / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="96">Sierra Nevada Summerfest Beer / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="638">Sierra Nevada Torpedo / 7.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="647">Sinfire Cinnamon Whisky / 39% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="363">Skinny Girl Margarita / 12.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="480">Skinnygirl Bare Naked Vodka / 30% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="481">Skinnygirl Cucumber Vodka / 30% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="482">Skinnygirl Island Coconut Vodka / 30% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="483">Skinnygirl Pina Colada / 9.95% ABV / 12oz serving</option>
+            <option class="drinkOption" value="487">Skinnygirl Red Wine / 12% ABV / 5oz serving</option>
+            <option class="drinkOption" value="486">Skinnygirl Rose Wine / 12% ABV / 5oz serving</option>
+            <option class="drinkOption" value="484">Skinnygirl Sangria / 10.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="488">Skinnygirl Tangerine Vodka / 30% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="489">Skinnygirl White Peach Margarita / 12.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="485">Skinnygirl White Wine / 12% ABV / 5oz serving</option>
+            <option class="drinkOption" value="491">Skol / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="448">Sleeman Clear / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="128">Smirnoff Ice / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="264">Smirnoff Ice Light / 3.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="642">Smirnoff Sorbet Light Vodka (All Flavors)
+            <option class="drinkOption" value="258">Smirnoff Twist of Green Apple Vodka / 35% ABV / 1.5oz serving
+            </option>
+            <option class="drinkOption" value="365">Smirnoff Twist of Raspberry Vodka / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="2">Smirnoff Vodka Blue Label 100 Proof
+            <option class="drinkOption" value="4">Smirnoff Vodka Red Label 80 Proof
+            <option class="drinkOption" value="5">Smirnoff Vodka Silver Label 90 Proof / 45.2% ABV / 1.5oz serving
+            </option>
+            <option class="drinkOption" value="263">Smithwicks Draught / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="555">Southern Comfort (70 proof) / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="428">Southwark Bitter / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="210">Sparks / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="584">Sparks Blackberry / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="490">Sparks Iced Tea / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="412">Sparks Lemonade / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="13">Sparks Light / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="212">Sparks Plus 6% / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="213">Sparks Plus 7% / 7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="444">Spaten Lager / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="357">St. Pauli Girl - Lager / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="165">Steel Reserve High Gravity / 8.1% ABV / 12oz serving</option>
+            <option class="drinkOption" value="167">Steel Six / 6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="427">Steinlager Classic / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="150">Stella Artois / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="508">Stella Rosa / 5.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="461">Stirrings Triple Sec / 30% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="639">Stolichnaya Vodka / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="460">Strawberry Daiquiri (blended) / 9.36% ABV / 12oz serving</option>
+            <option class="drinkOption" value="526">Strawberry Daiquiri - Bartles &amp; Jaymes / 3.6% ABV / 12oz serving
+            </option>
+            <option class="drinkOption" value="443">Strohs / 4.52% ABV / 12oz serving</option>
+            <option class="drinkOption" value="445">Strongbow Cider (USA variant) / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="319">Strongbow Dry Cider / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="426">Swan Draught / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="539">Syrah Wine / 12.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="6">Tanqueray London Dry Gin / 47.3% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="218">Tecate / 4.25% ABV / 12oz serving</option>
+            <option class="drinkOption" value="440">Tennents Lager / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="615">Tennents Original Export Lager / 4.7% ABV / 12oz serving</option>
+            <option class="drinkOption" value="441">Tennents Special / 3.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="442">Tennents Sweetheart Stout / 2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="56">Tequiza / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="465">TGIF - On The Rocks Mai Tai / 12.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="297">TGIF - On The Rocks Mudslide / 10% ABV / 5oz serving</option>
+            <option class="drinkOption" value="335">TGIF - On The Rocks White Russian / 12.5% ABV / 5oz serving</option>
+            <option class="drinkOption" value="585">Third Shift Amber Lager / 5.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="301">Three Olives Naked Vodka / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="234">Tilt Green 10% / 10% ABV / 12oz serving</option>
+            <option class="drinkOption" value="124">Tilt Green 8% / 8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="131">Tilt Orange 4.0% ABV / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="255">Tilt Purple 12% / 12% ABV / 12oz serving</option>
+            <option class="drinkOption" value="256">Tilt Red 12% / 12% ABV / 12oz serving</option>
+            <option class="drinkOption" value="415">Tooheys New / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="414">Tooheys Old / 4.4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="446">Trippel Belgian Style Ale / 7.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="354">Tsingtao / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="290">Tuaca Liqueur / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="510">Tusker Lager / 4.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="246">Twisted Tea Light - Hard Iced Tea / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="581">Tyskie / 5.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="652">ULLR Nodic Libation / 45% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="431">Valima Lager / 4.9% ABV / 12oz serving</option>
+            <option class="drinkOption" value="305">Vermouth - Martini Rosso Vermouth / 16% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="358">Victoria / 4.04% ABV / 12oz serving</option>
+            <option class="drinkOption" value="429">Victoria Bitter / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="281">Vodka - Royal Gate (generic) 80 proof / 40% ABV / 1.5oz serving
+            </option>
+            <option class="drinkOption" value="325">Vodka and Diet Coke / 13.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="51">Vodka and Red Bull / 13.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="7">Vodka and Red Bull Sugar Free / 13.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="77">Vodka and Rockstar / 13.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="8">Vodka and Rockstar Diet / 13.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="500">Warsteiner Premium Dunkel / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="499">Warsteiner Premium Verum / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="420">West End Draught / 4.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="120">White Russian / 17.7% ABV / 5oz serving</option>
+            <option class="drinkOption" value="244">Wild Turkey 101 / 50.5% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="245">Wild Turkey 80 / 40% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="313">Wyder's Apple Cider / 5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="315">Wyder's Pear Cider / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="314">Wyder's Raspberry Cider / 4% ABV / 12oz serving</option>
+            <option class="drinkOption" value="424">XXXX Bitter / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="650">Yazi Ginger Vodka / 35% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="381">Yuengling Black &amp; Tan / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="383">Yuengling Chesterfield Ale / 5.2% ABV / 12oz serving</option>
+            <option class="drinkOption" value="377">Yuengling Lager / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="378">Yuengling Light Lager / 3.5% ABV / 12oz serving</option>
+            <option class="drinkOption" value="382">Yuengling Porter / 4.8% ABV / 12oz serving</option>
+            <option class="drinkOption" value="379">Yuengling Premium / 4.6% ABV / 12oz serving</option>
+            <option class="drinkOption" value="380">Yuengling Premium Light / 3.3% ABV / 12oz serving</option>
+            <option class="drinkOption" value="334">Yukon Jack / 50% ABV / 1.5oz serving</option>
+            <option class="drinkOption" value="117">Zima / 4.94% ABV / 12oz serving</option>
+        </select>
+    </div>
+    <button id="addDrink" class="mt-2">Add Drink</button>
+
+    <br style=“line-height:2;"></br>
+
+    <div style="display:none" id="dataDisplay">
+        <div>My drink history:</div>
+        <ul id="drink"> </ul>
+        <div id="BAC_status">My BAC is <span id="bac"></span></div>
+
+        <div>Time since first drink: <span id="timer"></span> seconds </div>
+
+    </div>
+
+
+    <script>
+        var startTime = new Date();
+        var currentTime;
+        var runningTime;
+        var infoSubmitted = false;
+        var hasStarted = false;
+        var weight;
+        var gender;
+        var drinks = [];
+        var selectedDrink = null;
+        var bac = 0;
+        var drinkABV
+        var drinkSize
+
+
+        $("#submitInfo").click((e) => {
+            infoSubmitted = true;
+            weight = $("#weight").val();
+            gender = $("#gender").val();
+            $("#weightInput").hide();
+            $("#genderInput").hide();
+            $("#submitInfo").hide();
+            $("#weightValue").html(weight);
+            $("#genderValue").html(gender);
+            $("#weightDisplay").show();
+            $("#genderDisplay").show();
+        })
+
+        $("#addDrink").click((e) => {
+            if (!hasStarted) {
+                hasStarted = true;
+                $("#dataDisplay").show();
+                startTime = new Date();
+            }
+            var html = "<ul>"
+            for (var i = 0; i < drinks.length; i++) {
+                html = html + "<li>"
+                html += drinks[i] 
+                html += "</li>"
+            }
+            html += "<li>" + selectedDrink.name + "</li>";
+            html += "</ul>"
+            console.log({ selectedDrink })
+            drinks.push(selectedDrink.name)
+            console.log(drinks)
+            $("#drink").html(html);
+        });
+
+        $("#drinkSelector").change((e) => {
+            const selectedOption = $("#drinkSelector option:selected").text();
+            const splitDrink = selectedOption.split(" / ");
+            const drinkName = splitDrink[0]
+            drinkABV = parseFloat(splitDrink[1].split("%")[0])
+            drinkSize = parseFloat(splitDrink[2].split("oz")[0])
+            selectedDrink = {
+                name: drinkName,
+                abv: drinkABV,
+                size: drinkSize
+            }
+            console.log(selectedDrink)
+        })
+
+        const iterateTime = () => {
+            currentTime = new Date()
+            runningTime = currentTime - startTime;
+
+            $("#timer").html(Math.floor(runningTime / 1000));
+
+            var BW = (gender == "male") ? "0.58" : "0.49";
+            var MR = (gender == "male") ? "0.015" : "0.017";
+            const met_weight = weight * 0.4536
+            var StdDrink = drinkABV * drinkSize * 2.957353
+            var tot_ALCintake = StdDrink / 10
+
+            bac = (0.806 * tot_ALCintake * 1.2) / (BW * met_weight) - (MR * (runningTime / 3600000))
+            $("#bac").html(bac)
+        }
+        var timeFunction = setInterval(iterateTime, 1000)
+
+        setInterval(function () {
+            var bgColor = $("#BAC_status").css("background-color");
+            if (bac > 0.08) {
+                $("#BAC_status").css("background-color", "Red")
+            }
+            else {
+                $("#BAC_status").css("background-color", "Green")
+            }
+        }, 1000);
+
+    </script>
+</body>
+{% endblock %}
+
+
+</html>
